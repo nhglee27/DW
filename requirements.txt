@@ -1,0 +1,4 @@
+selenium==4.36.0
+pandas==2.2.2
+mysql-connector-python==9.5.0
+lxml==5.4.0

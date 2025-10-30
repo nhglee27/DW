@@ -1,0 +1,29 @@
+# version: '3.9'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: dw_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql/init:/docker-entrypoint-initdb.d
+
+  python:
+    build: .
+    container_name: dw_python
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/workspace
+      - ./staging:/staging
+    working_dir: /workspace
+    depends_on:
+      - mysql
+
+volumes:
+  mysql_data:
