@@ -9,9 +9,16 @@ services:
       MYSQL_ROOT_PASSWORD: rootpass
     ports:
       - "3306:3306"
+    
+    command: 
+      - --secure-file-priv=
+      - --local-infile=1
+    
     volumes:
       - mysql_data:/var/lib/mysql
       - ./mysql/init:/docker-entrypoint-initdb.d
+      - ./load_to_dw_temp:/DW/load_to_dw_temp
+      - ./load_to_dm_temp:/DW/load_to_dm_temp
 
   python:
     build: .

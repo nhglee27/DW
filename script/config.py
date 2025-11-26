@@ -28,3 +28,5 @@ LOG_TABLES = {
     'CONF': 'config_log',    
     'PROCESS': 'process_log'
 }
+
+print(DB_CONFIGS['CONTROL'])
