@@ -1,0 +1,32 @@
+DB_CONFIGS:
+  CONTROL:
+    host: mysql
+    port: 3306
+    user: root
+    password: rootpass
+    database: control_db
+
+  STAGING:
+    host: mysql
+    port: 3306
+    user: root
+    password: rootpass
+    database: agri_staging_db
+
+  DW:
+    host: mysql
+    port: 3306
+    user: root
+    password: rootpass
+    database: agri_dw_db
+  
+  M1D:
+    host: mysql
+    port: 3306
+    user: root
+    password: rootpass
+    database: agri_mart1_db
+
+LOG_TABLES:
+  CONF: config_log
+  PROCESS: process_log

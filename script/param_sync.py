@@ -2,10 +2,15 @@ import mysql.connector
 from datetime import datetime
 from config import DB_CONFIGS, LOG_TABLES
 from log_manager import log_conf_action
+from load_config import load_config
 
-CONTROL_CONFIG = DB_CONFIGS['CONTROL']
-CONF_LOG_TABLE = LOG_TABLES['CONF']
+config = load_config();
 
+
+
+CONTROL_CONFIG = config["DB_CONFIGS"]['CONTROL']
+CONF_LOG_TABLE = config['LOG_TABLES']['CONF']
+PROCESS_LOG_TABLE = config['LOG_TABLES']['PROCESS']
 
 
 def get_parameter_value(config_key):
@@ -66,4 +71,4 @@ def update_parameter(param_key, new_value):
         if conn and conn.is_connected():
             conn.close()
 
-print(get_parameter_value('source_url'))
+print( get_parameter_value('INSERT_AGGRE_DATA_PROCEDURE'))
